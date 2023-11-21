@@ -23,14 +23,6 @@ email: systemadmin@example.com
 password: password
 
 Doctor Accounts:
-1. 
-chrispineoluoch@example.com
-password: password
-
-2. 
-lincoln@example.com
-password: password
-
-3.
-benjamin@example.com
-password: password
+1. email: chrispineoluoch@example.com password: password
+2. email: lincoln@example.com password: password
+3. email: benjamin@example.com password: password
