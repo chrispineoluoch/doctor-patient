@@ -19,10 +19,10 @@ DB_PASSWORD=root
 8. Account Credentials for testing (Feel free to create more accounts):
 
 Receptionist Account:
-email: systemadmin@example.com
+emailaddress: systemadmin@example.com
 password: password
 
 Doctor Accounts:
-1. email: chrispineoluoch@example.com password: password
-2. email: lincoln@example.com password: password
-3. email: benjamin@example.com password: password
+1. emailaddress: chrispineoluoch@example.com password: password
+2. emailaddress: lincoln@example.com password: password
+3. emailaddress: benjamin@example.com password: password
