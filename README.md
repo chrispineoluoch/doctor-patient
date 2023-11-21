@@ -16,3 +16,21 @@ DB_USERNAME=root
 DB_PASSWORD=root
 
 7. run "php artisan serve" in the terminal to run the application.
+8. Account Credentials for testing (Feel free to create more accounts):
+
+Receptionist Account:
+email: systemadmin@example.com
+password: password
+
+Doctor Accounts:
+1. 
+chrispineoluoch@example.com
+password: password
+
+2. 
+lincoln@example.com
+password: password
+
+3.
+benjamin@example.com
+password: password
