@@ -3,7 +3,8 @@
 How to install:
 
 1. Set up your php Laravel Environment
-2. Clone the repository or download the project files from GitHub
+2. Make sure that the php.ini file matches that in the settings given in the main branch of the repository	
+2. Clone the repository or download the project files from GitHub from the master branch of the repository
 3. Create a database called "doctor-patient"
 4. Import the "mysql" file from GitHub into your database
 5. Go to the "env.example" file, duplicate and name the new file ".env"
