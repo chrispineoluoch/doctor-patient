@@ -2,7 +2,7 @@
 
 How to install:
 
-1. Set up your php Laravel Environment
+1. Set up your php Laravel Environment (ensure you have php and composer correctly installed).
 2. Make sure that the php.ini file matches that in the settings given in the main branch of the repository	
 2. Clone the repository or download the project files from GitHub from the master branch of the repository
 3. Create a database called "doctor-patient"
