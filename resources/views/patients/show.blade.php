@@ -27,6 +27,9 @@
             <label for="address" class="mb-2 block text-sm font-medium text-slate-900">Patient's email address</label>
             <p class="input">{{ $patient->address }}</p>
         </div>
+        <div class="mt-12 flex gap-2 justify-center">
+            <a href="{{ route('patients.index') }}" class="btn">Cancel</a>
+        </div>
     </div>
 @endsection
 <p></p>

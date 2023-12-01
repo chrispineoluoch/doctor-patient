@@ -30,8 +30,9 @@
             <input name="address" type="text" class="input" placeholder="Enter the patient's address"/>
         </div>
 
-        <div class="flex justify-center">
+        <div class="mt-12 flex gap-2 justify-center">
             <button type="submit" class="btn">Create Patient</button>
+            <a href="{{ route('patients.index') }}" class="btn">Cancel</a>
         </div>
     </form>
 @endsection

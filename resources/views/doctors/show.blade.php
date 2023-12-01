@@ -23,6 +23,9 @@
             <label for="specialization_id" class="mb-2 block text-sm font-medium text-slate-900">Doctor's specialization</label>
             <p class="input">{{ $doctor->specialization->specialization }}</p>
         </div>
+        <div class="mt-12 flex gap-2 justify-center">
+            <a href="{{ route('doctors.index') }}" class="btn">Cancel</a>
+        </div>
     </div>
 @endsection
 <p></p>

@@ -21,24 +21,30 @@
             <tbody>
                 @foreach ($doctors as $index => $doctor)
                     <tr>
-                        <td class="border py-0.5 px-2 text-left">{{ $index + 1 }}</td>
+                        <td class="border py-0.5 px-2 text-left">{{ ($doctors->currentPage() - 1) * $doctors->perPage() + $index + 1 }}</td>
                         <td class="border py-0.5 px-2 text-left">{{ $doctor->user->first_name }}
                             {{ $doctor->user->last_name }}</td>
                         <td class="border py-0.5 px-2 text-left">{{ $doctor->specialization->specialization }}</td>
                         <td class="border py-0.5 px-2 text-left">
-                            <a href="{{ route('doctors.show', $doctor->id) }}" class="text-blue-600">Show</a>
+                            <a href="{{ route('doctors.show', $doctor->id) }}" class="text-blue-600">View</a>
                             <a href="{{ route('doctors.edit', $doctor->id) }}" class="text-blue-600">Edit</a>
                             <form method="POST" action="{{ route('doctors.destroy', $doctor->id) }}"
                                 style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-600"
-                                    onclick="return confirm('Are you sure you want to delete this doctor?')">Delete</button>
+                                    onclick="return confirm('Are you sure you want to delete this doctor?')">Delete
+                                </button>
                             </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        @if ($doctors->count())
+            <nav class="mt-4">
+                {{ $doctors->links() }}
+            </nav>
+        @endif
     @endif
 @endsection

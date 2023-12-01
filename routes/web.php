@@ -95,4 +95,3 @@ Route::middleware(['auth', 'doctor'])->prefix('doctors')->group(function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('/dashboard/appointments-by-specialization', 'DashboardController@getAppointmentsBySpecialization')->name('dashboard.appointments-by-specialization');
-

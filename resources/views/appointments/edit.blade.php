@@ -55,8 +55,9 @@
             <textarea name="description" class="input" rows="5" style="height: 100px">{{ $appointment->description }}</textarea>
         </div>
 
-        <div class="flex justify-center">
+        <div class="mt-12 flex gap-2 justify-center">
             <button type="submit" class="btn">Update Appointment</button>
+            <a href="{{ route('appointments.index') }}" class="btn">Cancel</a>
         </div>
     </form>
 @endsection

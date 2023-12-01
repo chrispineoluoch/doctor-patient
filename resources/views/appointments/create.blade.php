@@ -42,7 +42,7 @@
 
         <div class="mb-4">
             <label for="appointment_datetime" class="mb-2 block text-sm font-medium text-slate-900">Appointment Date and Time</label>
-            <input name="appointment_datetime" type="datetime-local" class="input" required />
+            <input id="appointment_datetime" name="appointment_datetime" type="datetime-local" class="input" required />
         </div>
 
         <div class="mb-4">
@@ -50,12 +50,12 @@
             <textarea name="description" class="input" rows="5" style="height: 100px"></textarea>
         </div>
 
-        <div class="flex justify-center">
+        <div class="mt-12 flex gap-2 justify-center">
             <button type="submit" class="btn">Create Appointment</button>
+            <a href="{{ route('appointments.index') }}" class="btn">Cancel</a>
         </div>
     </form>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         $(document).ready(function() {
             // Fetch doctors based on selected specialization
@@ -78,6 +78,17 @@
                     }
                 });
             });
+        });
+    </script>
+
+    {{-- Script to have the minimum date to now --}}
+    <script>
+        $(document).ready(function () {
+            // Get the current date and time in the required format
+            var now = new Date().toISOString().slice(0, 16);
+    
+            // Set the 'min' attribute of the datetime-local input
+            $('#appointment_datetime').attr('min', now);
         });
     </script>
 @endsection

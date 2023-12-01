@@ -37,8 +37,9 @@
             </select>
         </div>
 
-        <div class="flex justify-center">
+        <div class="mt-12 flex gap-2 justify-center">
             <button type="submit" class="btn">Update Doctor</button>
+            <a href="{{ route('doctors.index') }}" class="btn">Cancel</a>
         </div>
     </form>
 @endsection

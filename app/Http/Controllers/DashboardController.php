@@ -25,7 +25,7 @@ class DashboardController extends Controller
                 return $query->whereDate('appointment_datetime', $date);
             })->when($doctorId, function ($query, $doctorId) {
                 return $query->where('doctor_id', $doctorId);
-            })->get();
+            })->paginate(10);
         }
 
         // Retrieve the list of doctors for the dropdown

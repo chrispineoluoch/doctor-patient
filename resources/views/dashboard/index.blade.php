@@ -61,19 +61,25 @@
                             <td class="border py-0.5 px-2 text-left">{{ $appointment->appointment_datetime }}</td>
                             <td class="border py-0.5 px-2 text-left">
                                 <a href="{{ route('appointments.edit', $appointment->id) }}" class="text-blue-600">Edit</a>
-                                <a href="{{ route('appointments.show', $appointment->id) }}" class="text-blue-600">Show</a>
+                                <a href="{{ route('appointments.show', $appointment->id) }}" class="text-blue-600">View</a>
                                 <form method="POST" action="{{ route('appointments.destroy', $appointment->id) }}"
                                     style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="text-red-600"
-                                        onclick="return confirm('Are you sure you want to delete this appointment?')">Delete</button>
+                                        onclick="return confirm('Are you sure you want to delete this appointment?')">Delete
+                                    </button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            @if ($appointments->count())
+            <nav class="mt-4">
+                {{ $appointments->links() }}
+            </nav>
+        @endif
         @endif
     </div>
 

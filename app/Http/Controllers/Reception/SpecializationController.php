@@ -14,7 +14,7 @@ class SpecializationController extends Controller
     public function index()
     {
         // Fetch the list of specializations
-        $specializations = Specialization::all();
+        $specializations = Specialization::paginate(10);
 
         // Pass the specializations data to the view
         return view('specializations.index', compact('specializations'));
@@ -58,7 +58,11 @@ class SpecializationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Find the appointment by ID
+        $specialization = Specialization::findOrFail($id);
+
+        // Return the show view with the appointment details
+        return view('specializations.show', compact('specialization'));
     }
 
     /**
@@ -66,7 +70,11 @@ class SpecializationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Find the appointment by ID
+        $specialization = Specialization::findOrFail($id);
+
+        // Return the edit form view with the appointment
+        return view('specializations.edit', compact('specialization'));
     }
 
     /**
@@ -74,7 +82,19 @@ class SpecializationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validate the request
+        $request->validate([
+            'specialization' => 'required|string',
+        ]);
+
+        // Find the patient by ID
+        $specialization = Specialization::findOrFail($id);
+
+        // Update the patient information
+        $specialization->update($request->all());
+
+        // Redirect to the index page
+        return redirect()->route('specializations.index')->with('success', 'Specialization updated successfully');
     }
 
     /**
@@ -82,6 +102,13 @@ class SpecializationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Find the patient by ID
+        $specialization = Specialization::findOrFail($id);
+
+        // Delete the patient
+        $specialization->delete();
+
+        // Redirect to the index page
+        return redirect()->route('specializations.index')->with('success', 'Specialization deleted successfully');
     }
 }

@@ -13,7 +13,7 @@
         <p><strong>Time:</strong> {{ $appointment->appointment_time }}</p>
     </div>
 
-    <div class="flex justify-center">
-        <a href="{{ route('appointments.index') }}" class="btn">Back to Appointments</a>
+    <div class="mt-12 flex gap-2 justify-center">
+        <a href="{{ route('appointments.index') }}" class="btn">Cancel</a>
     </div>
 @endsection

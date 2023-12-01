@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Specialization;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class AppointmentController extends Controller
 {
@@ -18,7 +19,7 @@ class AppointmentController extends Controller
     public function index()
     {
         // Fetch all scheduled appointments with related doctor and patient details
-        $appointments = Appointment::all();
+        $appointments = Appointment::paginate(10);
 
         return view('appointments.index', compact('appointments'));
     }
@@ -50,9 +51,17 @@ class AppointmentController extends Controller
             'specialization_id' => 'required|exists:specializations,id',
             'doctor_id' => 'required|exists:doctors,id',
             'patient_id' => 'required|exists:patients,id',
-            'appointment_datetime' => 'required|date_format:Y-m-d\TH:i|after:now',
+            'appointment_datetime' => [
+                'required',
+                'date_format:Y-m-d\TH:i',
+                'after:now',
+                Rule::unique('appointments', 'appointment_datetime'),
+            ],
             'description' => 'nullable|string',
             // Add other appointment-specific fields
+        ], [
+            'appointment_datetime.after' => 'Please select a date and time in the future.',
+            'appointment_datetime.unique' => 'The selected date and time is already taken.',
         ]);
 
         // Save the appointment to the database
@@ -104,9 +113,17 @@ class AppointmentController extends Controller
             'specialization_id' => 'required|exists:specializations,id',
             'doctor_id' => 'required|exists:doctors,id',
             'patient_id' => 'required|exists:patients,id',
-            'appointment_datetime' => 'required|date_format:Y-m-d\TH:i|after:now',
+            'appointment_datetime' => [
+                'required',
+                'date_format:Y-m-d\TH:i',
+                'after:now',
+                Rule::unique('appointments', 'appointment_datetime')->ignore($appointment),
+            ],
             'description' => 'nullable|string',
             // Add other appointment-specific fields
+        ], [
+            'appointment_datetime.after' => 'Please select a date and time in the future.',
+            'appointment_datetime.unique' => 'The selected date and time is already taken.',
         ]);
 
         // Update the appointment in the database

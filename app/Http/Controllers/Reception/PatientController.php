@@ -14,7 +14,7 @@ class PatientController extends Controller
     public function index()
     {
         // Fetch the list of patients
-        $patients = Patient::all();
+        $patients = Patient::paginate(10);
 
         // Pass the patients data to the view
         return view('patients.index', compact('patients'));

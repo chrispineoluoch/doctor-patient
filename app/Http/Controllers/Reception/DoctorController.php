@@ -18,7 +18,7 @@ class DoctorController extends Controller
     public function index()
     {
         // Fetch the list of doctors
-        $doctors = Doctor::all();
+        $doctors = Doctor::paginate(10);
 
         // Pass the doctors data to the view
         return view('doctors.index', compact('doctors'));
