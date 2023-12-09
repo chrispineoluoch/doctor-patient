@@ -16,8 +16,9 @@ DB_DATABASE=doctor-patient
 DB_USERNAME=root
 DB_PASSWORD=root
 
-7. run "php artisan serve" in the terminal to run the application.
-8. Account Credentials for testing (Feel free to create more accounts):
+7. run "composer install" in the terminal in the folder of your project.
+8. run "php artisan serve" in the terminal to run the application.
+9. Account Credentials for testing (Feel free to create more accounts):
 
 Receptionist Account:
 emailaddress: systemadmin@example.com
