@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `doctor-patient`
 --
-CREATE DATABASE IF NOT EXISTS `doctor-patient` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS `d-p` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `doctor-patient`;
 
 -- --------------------------------------------------------
