@@ -21,6 +21,6 @@ class ReceptionistMiddleware
         }
 
         // If not a receptionist, redirect or handle as needed
-        return redirect()->route('homepage'); // Change 'home' to the desired route
+        return redirect()->route('homepage');
     }
 }

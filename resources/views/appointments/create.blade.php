@@ -56,6 +56,7 @@
         </div>
     </form>
 
+    {{-- Script to dynamically populate a dropdown list of doctors based on the selected specialization --}}
     <script>
         $(document).ready(function() {
             // Fetch doctors based on selected specialization
@@ -81,7 +82,7 @@
         });
     </script>
 
-    {{-- Script to have the minimum date to now --}}
+    {{-- Script to have the minimum appointment date to now --}}
     <script>
         $(document).ready(function () {
             // Get the current date and time in the required format

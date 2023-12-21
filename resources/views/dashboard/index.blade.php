@@ -3,10 +3,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h4 class="block text-2xl font-semibold text-slate-900 mb-4">Appointment Dashboard</h4>
+    <h4 class="block text-2xl font-semibold text-slate-900 mb-4 text-center">Appointment Dashboard</h4>
 
     <!-- Search Form -->
-    <form action="{{ route('dashboard.index') }}" method="GET" class="mb-4" id="searchForm">
+    <form action="{{ route('dashboard.index') }}" method="GET" class="mb-4 flex justify-center" id="searchForm">
         <div class="flex space-x-4">
             <div>
                 <label for="date" class="block text-sm font-medium text-gray-700">Enter Date</label>
@@ -17,7 +17,8 @@
                 <label for="doctor" class="block text-sm font-medium text-gray-700">Select Doctor:</label>
                 <!-- Replace 'doctors' with the actual route or method to retrieve the list of doctors -->
                 <select name="doctor" id="doctor" class="mt-1 p-2 h-10 border rounded-md">
-                    <option value="" selected>Any Doctor</option>
+                    <option value="" selected>Select Doctor</option>
+                    <option value="" selected>All Doctor</option>
                     @foreach ($doctors as $doctor)
                         <option value="{{ $doctor->id }}" {{ request('doctor') == $doctor->id ? 'selected' : '' }}>
                             {{ $doctor->getFullNameAttribute() }}
@@ -27,13 +28,14 @@
             </div>
             <div class="flex items-end gap-2">
                 <button type="submit" class="btn">Search</button>
-                <button href="{{ route('dashboard.index') }}" type="button" class="btn h-10" onclick="clearSearch()">Clear</button>
+                <button href="{{ route('dashboard.index') }}" type="button" class="btn h-10"
+                    onclick="clearSearch()">Clear</button>
             </div>
         </div>
     </form>
 
     <!-- Display Filtered Appointments -->
-    <div id="dashboardContent">
+    <div id="dashboardContent" class="flex justify-center mt-12">
         @if ($appointments->isEmpty())
             <p>No Appointments found.</p>
         @else
@@ -51,7 +53,8 @@
                 <tbody>
                     @foreach ($appointments as $index => $appointment)
                         <tr>
-                            <td class="border py-0.5 px-2 text-left">{{ $index + 1 }}</td>
+                            <td class="border py-0.5 px-2 text-left">
+                                {{ ($appointments->currentPage() - 1) * $appointments->perPage() + $index + 1 }}</td>
                             <td class="border py-0.5 px-2 text-left">{{ $appointment->patient->first_name }}
                                 {{ $appointment->patient->last_name }}</td>
                             <td class="border py-0.5 px-2 text-left">{{ $appointment->doctor->user->first_name }}
@@ -76,13 +79,17 @@
                 </tbody>
             </table>
             @if ($appointments->count())
-            <nav class="mt-4">
-                {{ $appointments->links() }}
-            </nav>
-        @endif
+                <nav class="mt-4">
+                    {{ $appointments->links() }}
+                </nav>
+            @endif
         @endif
     </div>
+    <div class="mt-12 flex gap-2 justify-center">
+        <a href="{{ route('homepage') }}" class="btn">Cancel</a>
+    </div>
 
+    {{-- Script to clear the search results and search parameters --}}
     <script>
         function clearSearch() {
             // Clear search inputs

@@ -25,9 +25,9 @@ class SpecializationController extends Controller
      */
     public function create()
     {
-        $specializationOptions = ['Cardiology', 'Pediatrics', 'Dermatology'];sort($specializationOptions);
+        // $specializationOptions = ['Cardiology', 'Pediatrics', 'Dermatology'];sort($specializationOptions);
 
-        return view('specializations.create', compact('specializationOptions'));
+        return view('specializations.create');
 
     }
 
@@ -56,7 +56,7 @@ class SpecializationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         // Find the appointment by ID
         $specialization = Specialization::findOrFail($id);
@@ -68,7 +68,7 @@ class SpecializationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         // Find the appointment by ID
         $specialization = Specialization::findOrFail($id);
@@ -100,7 +100,7 @@ class SpecializationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         // Find the patient by ID
         $specialization = Specialization::findOrFail($id);

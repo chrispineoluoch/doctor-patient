@@ -18,7 +18,7 @@
             <tbody>
                 @foreach ($appointments as $index => $appointment)
                     <tr>
-                        <td class="border py-0.5 px-2 text-left">{{ $index + 1 }}</td>
+                        <td class="border py-0.5 px-2 text-left">{{ ($appointments->currentPage() - 1) * $appointments->perPage() + $index + 1 }}</td>
                         <td class="border py-0.5 px-2 text-left">{{ $appointment->patient->first_name }}
                             {{ $appointment->patient->last_name }}</td>
                         <td class="border py-0.5 px-2 text-left">{{ $appointment->appointment_datetime }}</td>

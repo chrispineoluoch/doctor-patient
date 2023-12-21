@@ -51,7 +51,7 @@
                                 <h4 class="mb-4 block text-base font-semibold text-slate-900 text-left">Dashboard Module</h4>
                                 <a href="{{ route('dashboard.index') }}" type="button"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                             </div>
-                            <h4 class="mb-4 block text-base font-normal text-slate-900 text-left">Access the dashboard module</h4>
+                            <h4 class="mb-4 block text-base font-normal text-slate-900 text-left">Access the dashboard module to view metrics and search appointments</h4>
                         </div>
                         <div class="cards w-72 mb-4">
                             <div class="flex justify-between">

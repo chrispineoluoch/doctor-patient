@@ -162,9 +162,13 @@ class DoctorController extends Controller
      */
     public function viewAppointments($id)
     {
+        // Retrieve the doctor with their appointments
         $doctor = Doctor::with('appointments')->findOrFail($id);
+
+        // Get the appointments associated with the doctor.
         $appointments = $doctor->appointments;
 
+        // Return the view 'doctors.appointments' and pass the doctor and appointments data to the view.
         return view('doctors.appointments', compact('doctor', 'appointments'));
     }
 

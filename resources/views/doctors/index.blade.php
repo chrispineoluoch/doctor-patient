@@ -46,5 +46,8 @@
                 {{ $doctors->links() }}
             </nav>
         @endif
+        <div class="mt-4 flex gap-2 justify-end">
+            <a href="{{ route('homepage') }}" class="btn">Back</a>
+        </div>
     @endif
 @endsection

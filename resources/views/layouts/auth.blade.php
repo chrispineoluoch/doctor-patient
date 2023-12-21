@@ -13,8 +13,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Vendor JS Files -->
-  {{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
-  {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="//unpkg.com/alpinejs" defer></script>
 
 
   {{-- blade-formatter-disable --}}

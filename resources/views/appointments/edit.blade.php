@@ -23,7 +23,7 @@
 
         <div class="mb-4">
             <label for="specialization_id" class="mb-2 block text-sm font-medium text-slate-900">Select Specialization</label>
-            <select name="specialization_id" class="input" required>
+            <select name="specialization_id" id="specialization_id" class="input" required>
                 <option value="" disabled>Select Specialization</option>
                 @foreach ($specializations as $specialization)
                     <option value="{{ $specialization->id }}" {{ $appointment->specialization_id == $specialization->id ? 'selected' : '' }}>
@@ -35,7 +35,7 @@
 
         <div class="mb-4">
             <label for="doctor_id" class="mb-2 block text-sm font-medium text-slate-900">Select Doctor</label>
-            <select name="doctor_id" class="input" required>
+            <select name="doctor_id" id="doctor_id" class="input" required>
                 <option value="" disabled>Select Doctor</option>
                 @foreach ($doctors as $doctor)
                     <option value="{{ $doctor->id }}" {{ $appointment->doctor_id == $doctor->id ? 'selected' : '' }}>
@@ -47,7 +47,7 @@
 
         <div class="mb-4">
             <label for="appointment_datetime" class="mb-2 block text-sm font-medium text-slate-900">Appointment Date</label>
-            <input name="appointment_datetime" type="datetime-local" class="input" value="{{ $appointment->appointment_datetime }}" required />
+            <input id="appointment_datetime" name="appointment_datetime" type="datetime-local" class="input" value="{{ $appointment->appointment_datetime }}" required />
         </div>
 
         <div class="mb-4">
@@ -60,4 +60,41 @@
             <a href="{{ route('appointments.index') }}" class="btn">Cancel</a>
         </div>
     </form>
+
+    {{-- Script to dynamically populate a dropdown list of doctors based on the selected specialization --}}
+    <script>
+        $(document).ready(function() {
+            // Fetch doctors based on selected specialization
+            $('#specialization_id').change(function() {
+                var specializationId = $(this).val();
+                console.log('Specialization ID:', specializationId);
+
+                // Fetch doctors using AJAX and populate the doctor dropdown
+                $.ajax({
+                    url: '{{ route('appointments.fetch-doctors', ['specializationId' => ':specializationId']) }}'
+                        .replace(':specializationId', specializationId),
+                    type: 'GET',
+                    success: function(data) {
+                        $('#doctor_id').empty().append(
+                            '<option value="" disabled selected>Select Doctor</option>');
+                        $.each(data, function(key, value) {
+                            $('#doctor_id').append('<option value="' + key + '">' +
+                                value + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+    {{-- Script to have the minimum appointment date to now --}}
+    <script>
+        $(document).ready(function () {
+            // Get the current date and time in the required format
+            var now = new Date().toISOString().slice(0, 16);
+    
+            // Set the 'min' attribute of the datetime-local input
+            $('#appointment_datetime').attr('min', now);
+        });
+    </script>
 @endsection

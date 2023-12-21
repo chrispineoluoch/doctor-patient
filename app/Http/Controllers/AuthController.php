@@ -83,13 +83,13 @@ class AuthController extends Controller
      */
     public function destroy()
     {
-        // Log out the currently authenticated user
+        // Log out the currently authenticated user clearing the user's authentication status and session data.
         Auth::logout();
 
         // Invalidate the user's session to clear any existing session data and prevent session hijacking
         request()->session()->invalidate();
 
-        // Regenerate the CSRF token for enhanced security
+        // Regenerate the CSRF token for enhanced security to protect against Cross-Site Request Forgery attacks.
         request()->session()->regenerateToken();
 
         // Redirect the user to the home page

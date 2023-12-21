@@ -44,5 +44,8 @@
                 {{ $specializations->links() }}
             </nav>
         @endif
+        <div class="mt-12 flex gap-2 justify-center">
+            <a href="{{ route('homepage') }}" class="btn">Cancel</a>
+        </div>
     @endif
 @endsection
